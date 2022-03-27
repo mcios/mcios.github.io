@@ -1,1 +1,96 @@
-Hello World!
+<!DOCTYPE html>
+<head>
+  <link href="/normalize.css" rel="stylesheet" />
+  <style>
+    header {
+      text-align: center;
+      background: url("https://cdn.wallpapersafari.com/47/95/XEvZg5.png");
+      background-size: cover;
+      color: white;
+    }
+    a {
+      color: white;
+    }
+    h1 {
+      font-size: 70px;
+    }
+    img {
+      margin: 40px 0px 0px 0px;
+      border: 7px solid white;
+      border-radius: 20px;
+    }
+    ul {
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    li {
+      display: inline;
+      padding: 0px 10px 0px 10px;
+    }
+    article {
+      max-width: 500px;
+      padding: 20px;
+      margin: 0 auto;
+    }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 36px;
+      }
+      li {
+        display: block;
+        padding: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://imgur.com/pqkh15V" />
+    <h1>Duck's Blog</h1>
+    <ul>
+      <li><a href="#">I've Got Down</a></li>
+      <li><a href="#">Lyrical Quacks</a></li>
+      <li><a href="#">Technical Quacks</a></li>
+    </ul>
+  </header>
+  <article>
+    <h2>Photo Booth</h2>
+    <p>
+      Taiyaki raclette marfa blog tumeric, selvage food truck pour-over sriracha
+      selfies hoodie asymmetrical enamel pin. Hammock vape aesthetic cliche
+      narwhal small batch. Crucifix mustache af umami direct trade jianbing tote
+      bag vaporware. Before they sold out helvetica kitsch everyday carry. Echo
+      park dreamcatcher kitsch, hexagon authentic flexitarian humblebrag
+      wayfarers try-hard irony small batch keytar.
+    </p>
+    <button>Like Totally</button>
+  </article>
+  <article>
+    <h2>Banh Mi</h2>
+    <p>
+      Sartorial meggings VHS, humblebrag hammock unicorn mixtape yuccie kale
+      chips gentrify vape knausgaard. Offal actually tbh chicharrones literally
+      chillwave brunch tousled fanny pack cliche selvage. Snackwave pug art
+      party chicharrones prism pork belly scenester DIY schlitz gentrify 90's.
+      PBR&B jianbing hashtag sustainable kickstarter iPhone live-edge twee
+      letterpress.
+    </p>
+    <button>Like Totally</button>
+  </article>
+  <article>
+    <h2>Squid Affogato</h2>
+    <p>
+      Deep v try-hard aesthetic meggings, narwhal swag literally live-edge blog
+      drinking vinegar keffiyeh jianbing. Bicycle rights plaid snackwave, tumblr
+      ugh food truck fam cred. Art party pug pour-over, neutra marfa bicycle
+      rights literally master cleanse offal cardigan kombucha YOLO sartorial
+      pitchfork XOXO. Bespoke marfa kogi unicorn hell of, franzen PBR&B.
+    </p>
+    <button>Like Totally</button>
+  </article>
+  <script>
+    $("button").on("click", function () {
+      alert("clicked!");
+    });
+  </script>
+</body>
