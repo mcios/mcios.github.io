@@ -1,98 +1,151 @@
 <!DOCTYPE html>
 <head>
-  <link href="/normalize.css" rel="stylesheet" />
+  <script src="/assets/jquery.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css?family=Sigmar+One"
+    rel="stylesheet"
+    type="text/css"
+  />
   <style>
-    header {
-      text-align: center;
-      background: url("https://cdn.wallpapersafari.com/47/95/XEvZg5.png");
-      background-size: cover;
-      color: white;
+    body {
+      font-family: helvetica, sans-serif;
+      margin: 0 auto;
+      max-width: 600px;
+      background: #232323;
     }
-    a {
-      color: white;
+    div {
+      height: 200px;
+      background-size: cover;
+      position: relative;
+      margin: 40px 0 0 0;
+      border-radius: 12px;
     }
     h1 {
-      font-size: 70px;
+      font-family: "Sigmar One";
+      text-align: center;
+      font-size: 75px;
+      color: #aaaaaa;
+      margin: 60px 0 0 0;
+      line-height: 60px;
     }
-    img {
-      margin: 40px 0px 0px 0px;
-      border: 7px solid white;
-      border-radius: 20px;
-      height: 20%;
-      width: 20%;
+    h2 {
+      text-align: center;
+      color: #bbbbbb;
+      margin: 0px 0 70px 0;
+      line-height: 40px;
     }
-    ul {
+    p {
+      color: rgba(255, 255, 255, 1);
+      background: black;
+      background: linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.4));
+      background: -webkit-linear-gradient(
+        bottom,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.4)
+      );
+      background: -moz-linear-gradient(
+        bottom,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.4)
+      );
       padding: 10px;
-      background: rgba(0, 0, 0, 0.5);
+      line-height: 28px;
+      text-align: justify;
+      position: absolute;
+      bottom: 0;
+      margin: 0;
+      height: 30px;
+      transition: height 0.5s;
+      -webkit-transition: height 0.5s;
+      -moz-transition: height 0.5s;
     }
-    li {
-      display: inline;
-      padding: 0px 10px 0px 10px;
+
+    small {
+      opacity: 0;
     }
-    article {
-      max-width: 500px;
-      padding: 20px;
-      margin: 0 auto;
+
+    .show-description p {
+      height: 150px;
+    }
+
+    .show-description small {
+      opacity: 1;
+    }
+
+    .first {
+      background-image: url("https://i.imgur.com/oqJMp7w.jpeg");
+    }
+    .second {
+      background-image: url("data:image/jpeg;base64,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");
+    }
+    .dessert {
+      background-image: url("https://cdn.chimpify.net/5f896ecda8587281208b456f/2021/04/mmt-SoM-dataDrivenDecisionMaking_blog.png");
+    }
+    .price {
+      float: right;
     }
     @media (max-width: 500px) {
       h1 {
-        font-size: 36px;
+        font-size: 50px;
+        margin-top: 20px;
+        line-height: 40px;
       }
-      li {
-        display: block;
-        padding: 5px;
+      h2 {
+        font-size: 20px;
+        margin: 20px 0 30px 0;
+      }
+      div {
+        margin: 20px 12px 0 12px;
+      }
+      p {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      small {
+        font-size: 16px;
       }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <img src="https://i.imgur.com/pqkh15V.png" />
-    <h1>Duck's Blog</h1>
-    <ul>
-      <li><a href="#">I've Got Down</a></li>
-      <li><a href="#">Lyrical Quacks</a></li>
-      <li><a href="#">Technical Quacks</a></li>
-    </ul>
-  </header>
-  <article>
-    <h2>Photo Booth</h2>
+  <h1>framework factory</h1>
+  <h2>girders for the Testing</h2>
+  <div class="first">
     <p>
-      Taiyaki raclette marfa blog tumeric, selvage food truck pour-over sriracha
-      selfies hoodie asymmetrical enamel pin. Hammock vape aesthetic cliche
-      narwhal small batch. Crucifix mustache af umami direct trade jianbing tote
-      bag vaporware. Before they sold out helvetica kitsch everyday carry. Echo
-      park dreamcatcher kitsch, hexagon authentic flexitarian humblebrag
-      wayfarers try-hard irony small batch keytar.
+      Linear Scripting Framework <span class="price">$14</span><br />
+      <small
+        >This framework is based on the concept of record and playback mode that
+        is always achieved in a linear manner. It is more commonly named as
+        record and playback model.</small
+      >
     </p>
-    <button>Like Totally</button>
-  </article>
-  <article>
-    <h2>Banh Mi</h2>
+  </div>
+  <div class="second">
     <p>
-      Sartorial meggings VHS, humblebrag hammock unicorn mixtape yuccie kale
-      chips gentrify vape knausgaard. Offal actually tbh chicharrones literally
-      chillwave brunch tousled fanny pack cliche selvage. Snackwave pug art
-      party chicharrones prism pork belly scenester DIY schlitz gentrify 90's.
-      PBR&B jianbing hashtag sustainable kickstarter iPhone live-edge twee
-      letterpress.
+      Modular Testing Framework<span class="price">$22</span><br />
+      <small
+        >Abstraction is the concept on which this framework is built. Based on
+        the modules, independent test scripts are developed to test the
+        software. Specifically, an abstraction layer is built for the components
+        to be hidden from the application under test.</small
+      >
     </p>
-    <button>Like Totally</button>
-  </article>
-  <article>
-    <h2>Squid Affogato</h2>
+  </div>
+  <div class="dessert">
     <p>
-      Deep v try-hard aesthetic meggings, narwhal swag literally live-edge blog
-      drinking vinegar keffiyeh jianbing. Bicycle rights plaid snackwave, tumblr
-      ugh food truck fam cred. Art party pug pour-over, neutra marfa bicycle
-      rights literally master cleanse offal cardigan kombucha YOLO sartorial
-      pitchfork XOXO. Bespoke marfa kogi unicorn hell of, franzen PBR&B.
+      Data Driven Testing Framework<span class="price">$8</span><br />
+      <small
+        >In this testing framework, a separate file in a tabular format is used
+        to store both the input and the expected output results. In this
+        framework, a single driver script can execute all the test cases with
+        multiple sets of data.</small
+      >
     </p>
-    <button>Like Totally</button>
-  </article>
+  </div>
   <script>
-    $("button").on("click", function () {
-      alert("clicked!");
+    $("div").on("click", function () {
+      $(this).toggleClass("show-description");
     });
   </script>
 </body>
